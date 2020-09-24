@@ -1,5 +1,5 @@
+# 2019-12-08
 # L. D. G. Charith Akalanka
-# ECU ID
 # Block Chain miner source code
 # Purpose:
 #       This program will generate the blockchain.txt file that lists the blocks
