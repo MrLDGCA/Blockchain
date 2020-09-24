@@ -3,7 +3,7 @@
 # Transaction recorder source code
 # Purpose :
 #       This program records the transactions to a ledger file. The program
-#       generates 2 files, transactions.txt the full ledger, and bolock.txt
+#       generates 2 files, transactions.txt the full ledger, and block.txt
 #       a file with all the new transactions since the block chain was last
 #       updated.
 
