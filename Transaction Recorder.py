@@ -1,5 +1,5 @@
+# 2019-12-08
 # L. D. G. Charith Akalanka
-# ECU ID
 # Transaction recorder source code
 # Purpose :
 #       This program records the transactions to a ledger file. The program
