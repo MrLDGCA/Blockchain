@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # 2019-12-08
 # L. D. G. Charith Akalanka
 # Transaction recorder source code
@@ -11,11 +12,12 @@
 from datetime import datetime
 import os
 
+
 # =====================================================================
 # Create and update the transactions.txt file
 
 def addTransaction(file, content):
-    f = open(file,'a')
+    f = open(file, 'a')
     f.write(content)
 
 
@@ -23,12 +25,12 @@ def addTransaction(file, content):
 # Validate names entered.
 # A user name must be upper case with no spaces or special chars
 
-def validName(prompt): 
+def validName(prompt):
     while True:
         name = input(prompt)
         if name.isalpha() and name.isupper():
             return name
-            
+
         else:
             print('!!! Invalid input !!!')
             continue
@@ -51,25 +53,24 @@ def validAmount(prompt):
             print('!!! Invalid input !!!')
             continue
 
+
 # =====================================================================
 # The main program
-        
+
 def main():
     user = 'y'
     while user == 'y':
-        sender = validName('Enter the senders name : ')
-        reciever = validName('Enter the recievers name : ')
-        amount = validAmount('Emter the amount : ')
+        sender = validName("Enter the senders name : ")
+        receiver = validName("Enter the receivers name : ")
+        amount = validAmount("Enter the amount : ")
         timestamp = str(datetime.now())
 
-        addTransaction('transactions.txt', sender+','+reciever+','+amount+','+timestamp+'\n')
-        if not os.path.exists('temp'):
-            os.mkdir('temp')
-        addTransaction('temp/block.txt', sender+','+reciever+','+amount+','+timestamp+'\n')
-        
-        
-        user = input('Add another transaction ? (y/n) :').lower()
+        addTransaction('transactions.txt', sender + ',' + receiver + ',' + amount + ',' + timestamp + '\n')
+        if not os.path.exists('.temp'):
+            os.mkdir('.temp')
+        addTransaction('.temp/block.txt', sender + ',' + receiver + ',' + amount + ',' + timestamp + '\n')
 
+        user = input('Add another transaction ? (y/n) :').lower()
 
 
 main()

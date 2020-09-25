@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # 2019-12-08
 # L. D. G. Charith Akalanka
 # Block Chain miner source code
@@ -38,7 +39,7 @@ def updateBlockChain():
     timeStamp = str(datetime.now())         # the time stamp for the new block
 
     try:                                    # look for new transactions in the block.txt file
-        transactionBlock = open('temp/block.txt','r')
+        transactionBlock = open('.temp/block.txt','r')
         transactionData = transactionBlock.read()
         transactionBlock.close()
         
@@ -47,7 +48,7 @@ def updateBlockChain():
         f.write(newIndex+','+timeStamp+','+transactionData.replace(',','|').replace('\n','||')+','+hashCalculator(lastEntry.replace(',',''))+','+nonce+'\n')
         f.close()
 
-        os.remove('temp/block.txt')              # the temporary file is deleted
+        os.remove('.temp/block.txt')              # the temporary file is deleted
             
             
     except IOError:
@@ -107,4 +108,4 @@ def main():
         savefile('0,'+timeStamp+',first block,'+hashCalculator('first block')+','+nonceCalculator('0'+timeStamp+'first block'+hashCalculator('first block'))+'\n')
         updateBlockChain()
 
-main()    
+main()       and Linux
