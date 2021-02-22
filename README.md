@@ -2,7 +2,7 @@
 Recreating a cryptocurrency ledger using Python
 
 _____________________________________________________________________
-How to use?
+## How to use?
   First use Transaction Recorder.py to record a few transactions.
   Initial use will generate 2 text files.
     transactions.txt  - a continuous log that will record all future transactions
@@ -14,7 +14,7 @@ How to use?
   on the blockchain.txt file. Then that block.txt file will be deleted.
 
 _____________________________________________________________________
-Theory
+## Theory
   The blockchain uses Hashing algorithms to join new transaction entries with previous transaction entries.
   This is why a blockchain is open yet not modifiable.
 
