@@ -43,9 +43,9 @@ def updateBlockChain():
         transactionData = transactionBlock.read()
         transactionBlock.close()
 
-        nonce = nonceCalculator(newIndex+','+timeStamp+','+transactionData.replace(',','|').replace('\n','||')+','+hashCalculator(lastEntry.replace(',',''))+',')
+        nonce = nonceCalculator(newIndex+','+timeStamp+','+transactionData.replace(',','|').replace('\n','||')+','+hashCalculator(lastEntry)+',')
         f = open('blockchain.txt','a')
-        f.write(newIndex+','+timeStamp+','+transactionData.replace(',','|').replace('\n','||')+','+hashCalculator(lastEntry.replace(',',''))+','+nonce+'\n')
+        f.write(newIndex+','+timeStamp+','+transactionData.replace(',','|').replace('\n','||')+','+hashCalculator(lastEntry)+','+nonce+'\n')
         f.close()
 
         os.remove('.temp/block.txt')              # the temporary file is deleted
