@@ -42,15 +42,15 @@ def updateBlockChain():
         transactionBlock = open('.temp/block.txt','r')
         transactionData = transactionBlock.read()
         transactionBlock.close()
-        
-        nonce = nonceCalculator(newIndex+timeStamp+transactionData.replace(',','|').replace('\n','||')+hashCalculator(lastEntry.replace(',','')))
+
+        nonce = nonceCalculator(newIndex+','+timeStamp+','+transactionData.replace(',','|').replace('\n','||')+','+hashCalculator(lastEntry.replace(',',''))+',')
         f = open('blockchain.txt','a')
         f.write(newIndex+','+timeStamp+','+transactionData.replace(',','|').replace('\n','||')+','+hashCalculator(lastEntry.replace(',',''))+','+nonce+'\n')
         f.close()
 
         os.remove('.temp/block.txt')              # the temporary file is deleted
-            
-            
+
+
     except IOError:
         print('No new transactions')
         input('Press any key to EXIT')
@@ -68,7 +68,7 @@ def nonceCalculator(content):
     step = 0
     while True:
         print(counter+step+0,counter+step+10000,counter+step+20000,counter+step+30000,counter+step+40000,counter+step+50000,counter+step+60000,counter+step+70000,counter+step+80000,counter+step+90000)
-        if hashlib.sha256((content+str(counter+step+0)).encode()).hexdigest()[:5]=='00000':
+        if hashlib.sha256((content+str(counter+step+0)).encode()).hexdigest()[:6]=='000000':
             return str(counter+step+0)
         elif hashlib.sha256((content+str(counter+step+10000)).encode()).hexdigest()[:6]=='000000':
             return str(counter+step+10000)
@@ -101,11 +101,11 @@ def nonceCalculator(content):
 
 def main():
     try:
-        updateBlockChain()               
-        
+        updateBlockChain()
+
     except IOError:                             # create the first blockchain entry using the specified parameters
         timeStamp = str(datetime.now())
-        savefile('0,'+timeStamp+',first block,'+hashCalculator('first block')+','+nonceCalculator('0'+timeStamp+'first block'+hashCalculator('first block'))+'\n')
+        savefile('0,'+timeStamp+',first block,'+hashCalculator('first block')+','+nonceCalculator('0,'+timeStamp+',first block,'+hashCalculator('first block')+',')+'\n')
         updateBlockChain()
 
 main()       and Linux
